@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  # Servicio de MySQL
+ 
+  crud_mysql:
+    build:
+      context: ./
+    container_name: crud_mysql
+    image: agente47/practica_grupal_4p_crud_mysql:latest
+    ports:
+      - "3000:3000"
+    restart: always
+   
