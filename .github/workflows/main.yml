@@ -70,7 +70,7 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |         
-          heroku stack:set container -a back-app
+          heroku stack:set container -a back-app2
           if [ $? -ne 0 ]; then
             echo "Error: Falló la configuración del stack container para back-app"
             exit 1
@@ -90,9 +90,9 @@ jobs:
       # Pull images from DockerHub
       - name: Pull images from DockerHub
         run: |         
-          docker pull sebastianwebapp/practica_grupal_4p_crud_mysql:latest
+          docker pull agente47/practica_grupal_4p_crud_mysql:latest
           if [ $? -ne 0 ]; then
-            echo "Error: Falló la descarga de la imagen sebastianwebapp/practica_grupal_4p_crud_mysql:latest"
+            echo "Error: Falló la descarga de la imagen agente47/practica_grupal_4p_crud_mysql:latest"
             exit 1
           fi   
 
@@ -101,7 +101,7 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          docker tag sebastianwebapp/practica_grupal_4p_crud_mysql:latest registry.heroku.com/back-app/web
+          docker tag agente47/practica_grupal_4p_crud_mysql:latest registry.heroku.com/back-app/web
           docker push registry.heroku.com/back-app/web
           if [ $? -ne 0 ]; then
             echo "Error: Falló el envío de la imagen backend a Heroku"
